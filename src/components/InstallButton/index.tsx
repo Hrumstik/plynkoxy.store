@@ -83,6 +83,9 @@ const InstallButton: React.FC<Props> = ({ appLink }) => {
       const choiceResult = await installPrompt.userChoice;
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted installation");
+        setTimeout(() => {
+          dispatch(setInstallState(PWAInstallState.installed));
+        }, 7000);
         if (window.fbq) {
           window.fbq("track", "Lead");
         }
